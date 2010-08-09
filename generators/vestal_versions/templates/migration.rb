@@ -19,9 +19,22 @@ class CreateVestalVersions < ActiveRecord::Migration
       t.index :tag
       t.index :created_at
     end
+    
+    create_table :field_changes do |t|
+      t.integer :version_id
+      t.string :field_name
+      t.string :old_value
+      t.string :new_value
+    end
+    
+    change_table :field_changes do |t|
+      t.index :version_id
+      t.index :field_name
+    end
   end
 
   def self.down
+    drop_table :field_changes
     drop_table :versions
   end
 end

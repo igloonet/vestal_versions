@@ -5,6 +5,7 @@ module VestalVersions
 
     # Associate polymorphically with the parent record.
     belongs_to :versioned, :polymorphic => true
+    has_many :field_changes, :class_name => 'VestalVersions::FieldChange'
 
     # ActiveRecord::Base#changes is an existing method, so before serializing the +changes+ column,
     # the existing +changes+ method is undefined. The overridden +changes+ method pertained to 

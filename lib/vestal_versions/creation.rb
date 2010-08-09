@@ -40,7 +40,13 @@ module VestalVersions
 
         # Creates a new version upon updating the parent record.
         def create_version
-          versions.create(version_attributes)
+          v = versions.create(version_attributes)
+          # Create an entry in the field_changes table for each attribute that changed in this version.
+          version_attributes[:changes].each_pair do |attribute, change|
+            v.field_changes.create(:field_name => attribute.to_s,
+                                   :old_value => change.first.to_s,
+                                   :new_value => change.last.to_s)
+          end
           reset_version_changes
           reset_version
         end
