@@ -64,7 +64,7 @@ class CreationTest < Test::Unit::TestCase
       end
 
       should 'only contain the specified columns' do
-        assert_equal @only, @user.versions.last.changes.keys
+        assert_equal @only, @user.versions.last.vchanges.keys
       end
 
       teardown do
@@ -99,7 +99,7 @@ class CreationTest < Test::Unit::TestCase
       end
 
       should 'respect only the :only options' do
-        assert_equal @only, @user.versions.last.changes.keys
+        assert_equal @only, @user.versions.last.vchanges.keys
       end
 
       teardown do
