@@ -1,0 +1,9 @@
+These are dependencies you will need to test this gem:
+shoulda
+mocha
+rcov
+sqlite3-ruby
+
+Additionally you need the following dependency to build this gem:
+jeweler
+
